@@ -5,7 +5,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 24,
-        paddingTop: Constants.statusBarHeight + 20,
+        paddingTop: Constants.statusBarHeight+5,
     },
 
     header: {
@@ -15,7 +15,8 @@ export default StyleSheet.create({
     },
 
     headerText: {
-        fontSize: 15,
+        marginTop: -15,
+        fontSize: 14,
         color: '#13131a',
     },
 
@@ -25,8 +26,8 @@ export default StyleSheet.create({
 
     title: {
         fontSize: 30,
-        marginBottom: 16,
-        marginTop: 48,
+        marginBottom: 5,
+        marginTop: -10,
         color: '#13131a',
         fontWeight: 'bold',
     },
@@ -38,24 +39,25 @@ export default StyleSheet.create({
     },
 
     list: {
-        marginTop: 32,
+        marginTop: 30,
     },
 
     bike: {
         padding: 24,
         borderRadius: 8,
         backgroundColor: '#FFF',
-        marginBottom: 16,
+        marginBottom: 20,
     },
 
     bikeProperty: {
+        marginTop: -5,
         fontSize: 14,
         color: '#41414d',
         fontWeight: 'bold',
     },
 
     bikeValue: {
-        marginTop: 8,
+        marginTop: 5,
         fontSize: 15,
         marginBottom: 24,
         color: '#737380'
@@ -68,7 +70,7 @@ export default StyleSheet.create({
     },
 
     detailsButtonText: {
-        color: '#DED118',
+        color: '#dee825',   
         fontSize: 15,
         fontWeight: 'bold',
     },

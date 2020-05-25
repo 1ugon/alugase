@@ -12,7 +12,7 @@ export default function Home() {
             <View style={styles.header}>
             <Image source={logoImg} />
                 <Text style={styles.headerText}>
-                    <Text style={styles.headerTextBold}>3 bikes</Text> prontas para alugar!
+                    Existem <Text style={styles.headerTextBold}>3</Text> bicicletas para alugar
                 </Text>
             </View>
 
