@@ -6,6 +6,7 @@
 - Digite `npm install` para instalar as dependencias
 - Também instale o react navigation digitando `npm install @react-navigation/native` e `npm install @react-navigation/stack`
 - Instale o expo globalmente digitando `sudo npm install -g expo-cli`
-- Por fim integre o expo com o react native ao digitar `expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view`
+- Instale e integre o expo junto ao react native ao digitar `expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view`
+- Por fim instale o mailComposer digitando `expo install expo-mail-composer`
 - Agora é só dar um `npm start`
 - **Não se esqueça de ter o aplicativo Expo instalado em seu celular para visualizar o aplicativo ou um emulador!**
