@@ -9,4 +9,4 @@
 - Instale e integre o expo junto ao react native ao digitar `expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view`
 - Por fim instale o mailComposer digitando `expo install expo-mail-composer`
 - Agora é só dar um `npm start` ou `expo start` (ambos comandos fazem a mesma função)
-- **Não se esqueça de ter o aplicativo Expo instalado em seu celular para visualizar o aplicativo ou um emulador!**
+- **Não se esqueça de ter o aplicativo Expo instalado em seu celular ou um emulador para visualizar o aplicativo!**
