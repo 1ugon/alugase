@@ -1,18 +1,25 @@
 import React from 'react';
 import { View, FlatList, Text, Image, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import logoImg from '../../assets/icon.png'
 
 import styles from './styles'
 
 export default function Home() {
+    const navigation = useNavigation();
+
+    function navigateToDetail() {
+        navigation.navigate('Detail');
+    }
+
     return(
         <View style={styles.container}>
             <View style={styles.header}>
             <Image source={logoImg} />
                 <Text style={styles.headerText}>
-                    Existem <Text style={styles.headerTextBold}>3</Text> bicicletas para alugar
+                    Exibindo <Text style={styles.headerTextBold}>3</Text> bicicletas
                 </Text>
             </View>
 
@@ -37,9 +44,9 @@ export default function Home() {
                 <Text style={styles.bikeValue}>R$100/mês</Text>
 
                 <TouchableOpacity style={styles.detailsButton}
-                onPress={() => {}}>
-                <Text style={styles.detailsButtonText}>Tenho interesse!</Text>
-                <Feather name="heart" size={16} color="#DED118" />
+                onPress={navigateToDetail}>
+                <Text style={styles.detailsButtonText}>Ver detalhes de locação</Text>
+                <FontAwesome name="star" size={18} color="#dee825" />
                 </TouchableOpacity>
             </View>
         )}
