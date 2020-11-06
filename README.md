@@ -1,12 +1,14 @@
 # Aluga-se
-**App de aluguel de bicicletas feito em react native**
+![Webp net-resizeimage](https://user-images.githubusercontent.com/39389740/98394532-acd81880-2039-11eb-9ede-ee9102d9e62b.png)
+![Webp net-resizeimage (1)](https://user-images.githubusercontent.com/39389740/98394530-ac3f8200-2039-11eb-86e4-bf481b9d08d1.png)
 
-# Como rodar?
-- Abra o VSCode, aperte `Ctrl + "` para abrir o cmd, entre na pasta mobile digitando `cd mobile`
-- Digite `npm install` para instalar as dependencias
-- Instale o expo globalmente digitando `npm install -g expo-cli`
-- Também instale o react navigation digitando `npm install @react-navigation/native` e `npm install @react-navigation/stack`
-- Instale e integre o expo junto ao react native ao digitar `expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view`
-- Por fim instale o mailComposer digitando `expo install expo-mail-composer`
-- Agora é só dar um `npm start` ou `expo start` (ambos comandos fazem a mesma função)
-- **Não se esqueça de ter o aplicativo Expo instalado em seu celular ou um emulador para visualizar o aplicativo!**
+# About
+I started this project to a college work in UDF, based in a Rocketseat react-native course
+
+# Running
+- Make sure you have react, react-native and expo-cli installed npm install -g expo-cli`
+- Clone project
+- `cd mobile
+- `npm install` to install node_modules
+- `npm start`
+- Enjoy!
