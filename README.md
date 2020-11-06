@@ -3,7 +3,7 @@
 ![Webp net-resizeimage (1)](https://user-images.githubusercontent.com/39389740/98394530-ac3f8200-2039-11eb-86e4-bf481b9d08d1.png)
 
 ## About
-I started this project to a college work in UDF, based in a Rocketseat react-native course
+I started this project to a college work in UDF realizing the need for bicycle rentals, based in a Rocketseat react-native course
 
 ## Running
 - Make sure you have react, react-native and expo-cli installed npm install -g expo-cli`
