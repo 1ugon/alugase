@@ -8,7 +8,7 @@ I started this project to a college work in UDF realizing the need for bicycle r
 ## Running
 - Make sure you have react, react-native and expo-cli installed npm install -g expo-cli`
 - Clone project
-- `cd mobile
-- `npm install` to install node_modules
+- `cd mobile`
+- `npm install`
 - `npm start`
 - Enjoy!
