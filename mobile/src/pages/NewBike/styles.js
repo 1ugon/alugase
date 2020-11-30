@@ -12,33 +12,11 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        marginRight: 20,
     },
 
-    headerText: {
-        marginTop: -15,
-        fontSize: 14,
-        color: '#13131a',
-    },
-
-    headerTextBold: {
-        fontWeight: 'bold',
-    },
-
-    title: {
-        fontSize: 30,
-        marginBottom: 5,
-        marginTop: -10,
-        color: '#13131a',
-        fontWeight: 'bold',
-    },
-
-    description: {
-        fontSize: 20,
-        color: '#737380',
-    },
-
-    list: {
-        marginTop: 30,
+    backButton: {
+        paddingBottom: 15,
     },
 
     bike: {
@@ -46,10 +24,11 @@ export default StyleSheet.create({
         borderRadius: 8,
         backgroundColor: '#FFF',
         marginBottom: 20,
+        marginTop: -20,
     },
 
     bikeProperty: {
-        marginTop: -5,
+        marginTop: 10,
         fontSize: 14,
         color: '#41414d',
         fontWeight: 'bold',
@@ -62,22 +41,38 @@ export default StyleSheet.create({
         color: '#737380'
     },
 
-    detailsButton: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    contactBox: {
+        padding: 24,
+        borderRadius: 8,
+        backgroundColor: '#FFF',
+        marginBottom: 16,
+    },
+
+    title: {
+        fontWeight: 'bold',
+        fontSize: 19,
+        color: '#13131a',
+        lineHeight: 30,
+    },
+
+    description: {
+        fontSize: 15,
+        color: '#737380',
+        marginTop: 16,
+    },
+
+    action: {
+        backgroundColor: '#dee825',
+        borderRadius: 8,
+        height: 50,
+        width: '100%',
+        justifyContent: 'center',
         alignItems: 'center',
     },
 
-    detailsButtonText: {
-        color: '#dee825',   
+    actionText: {
+        color: '#000000',
         fontSize: 15,
         fontWeight: 'bold',
-    },
-
-    newButtonText: {
-        color: '#dee825',   
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-
-});
+    }
+})

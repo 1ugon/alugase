@@ -1,67 +1,100 @@
-import React from 'react';
-import { View, TouchableOpacity, Image, Text, Linking } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
-import * as MailComposer from 'expo-mail-composer';
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  TouchableOpacity,
+  Image,
+  Text,
+  Linking,
+  TextInput,
+} from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import * as MailComposer from "expo-mail-composer";
 
-import logoImg from '../../assets/icon.png';
+import firebase from "firebase";
+import "firebase/firestore";
 
-import styles from './styles';
+import logoImg from "../../assets/icon.png";
 
-export default function Detail() {
-    const navigation = useNavigation();
-    const message = 'Olá, estou entrando em contato pois gostaria de alugar sua bicicleta encontrada no app do Aluga-se';
+import styles from "./styles";
 
-    function navigateBack() {
-        navigation.goBack()
-    }
+export default function Detail({ route }) {
+  const { uid } = route.params;
+  const navigation = useNavigation();
+  const firestore = firebase.firestore();
+  const message =
+    "Olá, estou entrando em contato pois gostaria de alugar sua bicicleta encontrada no app do Aluga-se";
 
-    function sendMail() {
-        MailComposer.composeAsync({
-            subject: 'Gostaria de alugar sua bicicleta',
-            recipients: ['teste@gmail.com'],
-            body: message,
-        })
-    }
+  const [dono, setDono] = useState("");
+  const [local, setLocal] = useState("");
+  const [valor, setValor] = useState(0);
 
-    function sendWpp() {
-        Linking.openURL(`whatsapp://send?phone=5561991137756&text=${message}`);
-    }
+  function navigateBack() {
+    navigation.goBack();
+  }
 
-    return(
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <Image source={logoImg} />
-                <TouchableOpacity onPress={navigateBack}>
-                    <FontAwesome style={styles.backButton} name="arrow-left" size={30} color="#dee825" />
-                </TouchableOpacity>
-            </View>
+  useEffect(() => {
+    firestore
+      .collection("Bicicletas")
+      .doc(uid)
+      .onSnapshot((doc) => {
+        setDono(doc.data().dono);
+        setLocal(doc.data().local);
+        setValor(doc.data().valor);
+      });
+  }, []);
 
-            <View style={styles.bike}>
-                <Text style={[styles.bikeProperty, { marginTop: 0 }]}>DONO:</Text>
-                <Text style={styles.bikeValue}>Edson</Text>
+  function sendMail() {
+    MailComposer.composeAsync({
+      subject: "Gostaria de alugar sua bicicleta",
+      recipients: ["teste@gmail.com"],
+      body: message,
+    });
+  }
 
-                <Text style={styles.bikeProperty}>LOCAL:</Text>
-                <Text style={styles.bikeValue}>Taguatinga</Text>
+  function sendWpp() {
+    Linking.openURL(`whatsapp://send?phone=55Telefone&text=${message}`);
+  }
 
-                <Text style={styles.bikeProperty}>VALOR:</Text>
-                <Text style={styles.bikeValue}>R$100/mês</Text>
-            </View>
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Image source={logoImg} />
+        <TouchableOpacity onPress={navigateBack}>
+          <FontAwesome
+            style={styles.backButton}
+            name="arrow-left"
+            size={30}
+            color="#dee825"
+          />
+        </TouchableOpacity>
+      </View>
 
-            <View style={styles.contactBox}>
-                <Text style={styles.title}>Alugue essa bicicleta agora mesmo!</Text>
-                <Text style={styles.description}>Entre em contato:</Text>
+      <View style={styles.bike}>
+        <Text style={[styles.bikeProperty, { marginTop: 0 }]}>DONO:</Text>
+        <Text style={styles.bikeValue}>{dono}</Text>
 
-                <View style={styles.actions}>
-                    <TouchableOpacity style={styles.action} onPress={sendWpp}>
-                        <Text style={styles.actionText}>WhatsApp</Text>
-                    </TouchableOpacity>
+        <Text style={styles.bikeProperty}>LOCAL:</Text>
+        <Text style={styles.bikeValue}>{local}</Text>
 
-                    <TouchableOpacity style={styles.action} onPress={sendMail}>
-                        <Text style={styles.actionText}>E-mail</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+        <Text style={styles.bikeProperty}>VALOR:</Text>
+        <Text style={styles.bikeValue}>R${valor}/mês</Text>
+      </View>
+
+      <View style={styles.contactBox}>
+        <Text style={styles.title}>Alugue essa bicicleta agora mesmo!</Text>
+        <Text style={styles.description}>Entre em contato:</Text>
+
+        <View style={styles.actions}>
+          <TouchableOpacity style={styles.action} onPress={sendWpp}>
+            <Text style={styles.actionText}>WhatsApp</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.action} onPress={sendMail}>
+            <Text style={styles.actionText}>E-mail</Text>
+          </TouchableOpacity>
         </View>
-    );
+      </View>
+    </View>
+  );
 }

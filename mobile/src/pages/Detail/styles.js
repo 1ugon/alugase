@@ -16,7 +16,7 @@ export default StyleSheet.create({
     },
 
     backButton: {
-        marginTop: -20,
+        paddingBottom: 15,
     },
 
     bike: {

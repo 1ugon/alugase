@@ -1,58 +1,109 @@
-import React from 'react';
-import { View, FlatList, Text, Image, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState, useCallback } from "react";
+import { View, FlatList, Text, Image, TouchableOpacity } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 
-import logoImg from '../../assets/icon.png'
+import firebase from "firebase";
+import "firebase/firestore";
 
-import styles from './styles'
+import logoImg from "../../assets/icon.png";
+
+import styles from "./styles";
 
 export default function Home() {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
+  const firestore = firebase.firestore();
 
-    function navigateToDetail() {
-        navigation.navigate('Detail');
-    }
+  const [bikes, setBikes] = useState(0);
+  const [list, setList] = useState([]);
+  const [uid, setUid] = useState("");
 
-    return(
-        <View style={styles.container}>
-            <View style={styles.header}>
-            <Image source={logoImg} />
-                <Text style={styles.headerText}>
-                    Exibindo <Text style={styles.headerTextBold}>3</Text> bicicletas
-                </Text>
-            </View>
+  function navigateToDetail() {
+    navigation.navigate("Detail", {
+      uid: uid,
+    });
+  }
 
-        <Text style={styles.title}>Bem-vindo!</Text>
-        <Text style={styles.description}>Escolha uma bicicleta para alugar.
+  function navigateToNewBike() {
+    navigation.navigate("NewBike");
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      checkBikes();
+      return () => {};
+    }, [bikes])
+  );
+
+  function checkBikes() {
+    firestore
+      .collection("Bicicletas")
+      .get()
+      .then(function (resultado) {
+        var count = 0;
+        var li = [];
+        resultado.forEach(function (doc) {
+          count += 1;
+          li.push({
+            id: doc.id,
+            dono: doc.data().dono,
+            local: doc.data().local,
+            valor: doc.data().valor,
+          });
+        });
+        setBikes(count);
+        setList(li);
+      });
+  }
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Image source={logoImg} />
+        <Text style={styles.headerText}>
+          Exibindo <Text style={styles.headerTextBold}>{bikes}</Text> bicicletas
         </Text>
+      </View>
 
-        <FlatList 
-        data={[1, 2, 3]}
+      <Text style={styles.title}>Bem-vindo!</Text>
+      <View style={{ flexDirection: "row" }}>
+        <Text style={styles.description}>Escolha uma bicicleta ou </Text>
+        <TouchableOpacity onPress={navigateToNewBike}>
+          <Text style={styles.newButtonText}>cadastre</Text>
+        </TouchableOpacity>
+        <Text style={styles.description}> a sua!</Text>
+      </View>
+
+      <FlatList
+        data={list}
         style={styles.list}
-        keyExtractor={bike => String(bike)}
         showsVerticalScrollIndicator={false}
-        renderItem={() => (
-            <View style={styles.bike}>
-                <Text style={styles.bikeProperty}>DONO:</Text>
-                <Text style={styles.bikeValue}>Edson</Text>
+        renderItem={({ item }) => (
+          <View style={styles.bike}>
+            <Text style={styles.bikeProperty}>DONO:</Text>
+            <Text style={styles.bikeValue}>{item.dono}</Text>
 
-                <Text style={styles.bikeProperty}>LOCAL:</Text>
-                <Text style={styles.bikeValue}>Taguatinga</Text>
+            <Text style={styles.bikeProperty}>LOCAL:</Text>
+            <Text style={styles.bikeValue}>{item.local}</Text>
 
-                <Text style={styles.bikeProperty}>VALOR:</Text>
-                <Text style={styles.bikeValue}>R$100/mês</Text>
+            <Text style={styles.bikeProperty}>VALOR:</Text>
+            <Text style={styles.bikeValue}>R${item.valor}/mês</Text>
 
-                <TouchableOpacity style={styles.detailsButton}
-                onPress={navigateToDetail}>
-                <Text style={styles.detailsButtonText}>Ver detalhes de locação</Text>
-                <FontAwesome name="star" size={18} color="#dee825" />
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              style={styles.detailsButton}
+              onPressIn={() => {
+                setUid(item.id);
+              }}
+              onPress={navigateToDetail}
+            >
+              <Text style={styles.detailsButtonText}>
+                Ver detalhes de locação
+              </Text>
+              <FontAwesome name="star" size={18} color="#dee825" />
+            </TouchableOpacity>
+          </View>
         )}
-        />
-
-        </View>
-
-    );
+      />
+    </View>
+  );
 }
