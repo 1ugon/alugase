@@ -1,12 +1,11 @@
 # Aluga-se
-![Webp net-resizeimage](https://user-images.githubusercontent.com/39389740/98394532-acd81880-2039-11eb-9ede-ee9102d9e62b.png)
-![Webp net-resizeimage (1)](https://user-images.githubusercontent.com/39389740/98394530-ac3f8200-2039-11eb-86e4-bf481b9d08d1.png)
+![alugase](https://user-images.githubusercontent.com/39389740/100573811-6cc22980-32b7-11eb-8b7e-05f40f433e4f.png)
 
 ## About
-I started this project to a college work in UDF realizing the need for bicycle rentals, based in a Rocketseat react-native course
+I started this project to a college work in UDF realizing the need for bicycle rentals. It's a React Native project made with Expo and Firebase.
 
 ## Running
-- Make sure you have react, react-native and expo-cli installed npm install -g expo-cli`
+- Make sure you have Expo installed
 - Clone project
 - `cd mobile`
 - `npm install`
