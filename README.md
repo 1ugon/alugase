@@ -5,8 +5,9 @@
 I started this project to a college work in UDF realizing the need for bicycle rentals. It's a React Native project made with Expo and Firebase.
 
 ## Running
-- Make sure you have Expo installed
-- Clone project
+- Make a firebase project named Bicicletas
+- Create a new file in `src/config/firebase.js` with your firebase configs, like this
+![config](https://user-images.githubusercontent.com/39389740/100952544-7fbf3e80-34ef-11eb-8acd-6716661ed57f.png)
 - `cd mobile`
 - `npm install`
 - `npm start`
