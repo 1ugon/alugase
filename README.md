@@ -6,7 +6,7 @@ I started this project to a college work in UDF realizing the need for bicycle r
 
 ## Running
 - Make a firebase project named Bicicletas
-- Create a new file in `src/config/firebase.js` with your firebase configs, like this
+- Create a file in `src/config/firebase.js` with your firebase configs, like this
 ![config](https://user-images.githubusercontent.com/39389740/100952544-7fbf3e80-34ef-11eb-8acd-6716661ed57f.png)
 - `cd mobile`
 - `npm install`
